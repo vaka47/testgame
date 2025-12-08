@@ -180,6 +180,8 @@ body {
   font-size: 32px;
   font-weight: 700;
   color: var(--accent-strong);
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast),
     background var(--transition-fast), border-color var(--transition-fast);
 }
@@ -187,6 +189,11 @@ body {
 .cell:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(180, 152, 206, 0.28);
+}
+
+.cell:focus,
+.cell:focus-visible {
+  outline: none;
 }
 
 .cell--o {
