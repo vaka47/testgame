@@ -237,8 +237,8 @@ function finishWin(statusMessage) {
     showResultModal("win", code);
   } else {
     promoCodeElement.textContent = code;
-    promoHint.textContent =
-      "Ваш промокод. Сообщение об этой победе отправлено в Telegram‑бот.";
+    promoHint.textContent = "";
+    promoHint.hidden = true;
     promoCodeElement.hidden = false;
     restartMessage.textContent = "Хотите сыграть ещё раз?";
     restartBlock.hidden = false;
