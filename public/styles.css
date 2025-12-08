@@ -506,6 +506,10 @@ body {
       "restart";
   }
 
+  .promo-block {
+    display: none;
+  }
+
   .board {
     padding: 14px;
   }
