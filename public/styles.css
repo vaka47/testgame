@@ -150,6 +150,8 @@ body {
   align-items: center;
   justify-content: center;
   grid-area: board;
+  width: 100%;
+  overflow: hidden;
 }
 
 .board {
@@ -170,6 +172,7 @@ body {
 .cell {
   width: 100%;
   height: 100%;
+  padding: 0;
   border-radius: 22px;
   border: 1px solid rgba(210, 191, 230, 0.85);
   background: rgba(255, 255, 255, 0.96);
@@ -502,9 +505,13 @@ body {
   }
 
   .board {
-    max-width: 260px;
-    padding: 12px;
+    max-width: 240px;
+    padding: 10px;
     gap: 8px;
+  }
+
+  .cell {
+    font-size: 26px;
   }
 
   .board--battleship .cell {
