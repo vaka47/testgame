@@ -174,11 +174,14 @@ body {
   max-width: 320px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  min-height: 40px;
   margin-bottom: 8px;
 }
 
-#restartMessage {
-  display: none;
+.board-header--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .cell {
@@ -390,7 +393,7 @@ body {
 .footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   font-size: 12px;
   color: var(--text-soft);
@@ -516,6 +519,10 @@ body {
       "footer"
       "promo"
       "restart";
+  }
+
+  .board-header {
+    display: none;
   }
 
   .promo-block {

@@ -240,8 +240,7 @@ function finishWin(statusMessage) {
     promoHint.textContent = "";
     promoHint.hidden = true;
     promoCodeElement.hidden = false;
-    restartMessage.textContent = "Хотите сыграть ещё раз?";
-    restartBlock.hidden = false;
+    restartBlock.classList.remove("board-header--hidden");
     restartButton.textContent = "Сыграть ещё раз";
   }
 
@@ -257,8 +256,7 @@ function finishLose(statusMessage) {
   if (isMobile()) {
     showResultModal("lose");
   } else {
-    restartMessage.textContent = finalStatus;
-    restartBlock.hidden = false;
+    restartBlock.classList.remove("board-header--hidden");
     restartButton.textContent = "Сыграть ещё раз";
   }
 
@@ -274,8 +272,7 @@ function finishDraw() {
   if (isMobile()) {
     showResultModal("draw");
   } else {
-    restartMessage.textContent = "Ничья. Попробуем ещё раз?";
-    restartBlock.hidden = false;
+    restartBlock.classList.remove("board-header--hidden");
     restartButton.textContent = "Сыграть ещё раз";
   }
 }
@@ -1205,6 +1202,7 @@ function resetBoard() {
   }
 
   hideResultModal();
+  restartBlock.classList.add("board-header--hidden");
 }
 
 function handleGameToggleClick(event) {
