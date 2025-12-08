@@ -156,8 +156,9 @@ body {
   display: grid;
   width: 100%;
   max-width: 320px;
+  aspect-ratio: 1 / 1;
   grid-template-columns: repeat(var(--board-columns, 3), 1fr);
-  grid-template-rows: repeat(var(--board-rows, 3), 1fr);
+  grid-template-rows: repeat(var(--board-rows, 3), minmax(0, 1fr));
   gap: 10px;
   background: radial-gradient(circle at top left, #ffe3f1 0, #f5e9ff 50%, #fdfbff 100%);
   padding: 18px;
@@ -168,8 +169,7 @@ body {
 
 .cell {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   border-radius: 22px;
   border: 1px solid rgba(210, 191, 230, 0.85);
   background: rgba(255, 255, 255, 0.96);
