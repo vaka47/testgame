@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Крестики-нолики с промокодом</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="title" id="pageTitle">Крестики‑нолики</h1>
+        <p class="subtitle" id="pageSubtitle">
+          Небольшая игра‑пауза: победите компьютер и получите промокод на
+          скидку.
+        </p>
+      </header>
+
+      <main class="main">
+        <section class="panel-block panel-block--status">
+          <h2 class="panel-title" id="modeTitle">Ваш ход — «X»</h2>
+          <p class="panel-text" id="modeDescription">
+            Компьютер играет «O». Победа даёт 5‑значный промокод.
+          </p>
+          <div class="status">
+            <span id="statusText">Ваш ход</span>
+          </div>
+        </section>
+
+        <section class="board-wrapper">
+          <div class="board" id="board"></div>
+        </section>
+
+        <section class="panel-block promo-block" id="promoBlock">
+          <h3 class="panel-subtitle">Ваш промокод</h3>
+          <p class="panel-text small" id="promoHint">
+            Промокод в случае вашей победы появится здесь.
+          </p>
+          <div class="promo-code" id="promoCode" hidden></div>
+        </section>
+
+        <section class="panel-block panel-block--restart" id="restartBlock" hidden>
+          <p class="panel-text" id="restartMessage">
+            В этот раз победил компьютер. Попробуете ещё раз?
+          </p>
+          <button class="btn btn-primary restart-button" id="restartButton">
+            Сыграть ещё раз
+          </button>
+        </section>
+        <footer class="footer footer-games main-footer">
+          <div class="footer-games-right">
+            <span class="footer-label">Игра:</span>
+            <div class="game-toggle" id="gameToggle">
+              <button
+                class="game-toggle__btn game-toggle__btn--active"
+                data-game="tic-tac-toe"
+              >
+                Крестики‑нолики
+              </button>
+              <button class="game-toggle__btn" data-game="battleship">
+                Морской бой
+              </button>
+              <button class="game-toggle__btn" data-game="checkers">
+                Шашки
+              </button>
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      <div class="modal-overlay" id="ruleModal" hidden>
+        <div class="modal">
+          <p class="modal__text" id="ruleModalText">
+            По правилам сначала нужно побить шашку соперника.
+          </p>
+          <button class="btn btn-primary modal__button" id="ruleModalButton">
+            Понятно
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+    </html>
