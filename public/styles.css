@@ -74,8 +74,7 @@ body {
   grid-template-areas:
     "status board"
     "promo board"
-    "restart board"
-    ". footer";
+    "footer board";
   gap: 24px;
   align-items: start;
 }
@@ -147,8 +146,9 @@ body {
 
 .board-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   grid-area: board;
   width: 100%;
   overflow: hidden;
@@ -167,6 +167,18 @@ body {
   border-radius: 28px;
   border: 1px solid rgba(226, 214, 234, 0.9);
   box-shadow: 0 22px 38px rgba(117, 90, 140, 0.28);
+}
+
+.board-header {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+#restartMessage {
+  display: none;
 }
 
 .cell {

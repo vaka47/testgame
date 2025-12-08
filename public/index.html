@@ -28,6 +28,14 @@
         </section>
 
         <section class="board-wrapper">
+          <div class="board-header" id="restartBlock" hidden>
+            <p class="panel-text" id="restartMessage">
+              В этот раз победил компьютер.
+            </p>
+            <button class="btn btn-primary restart-button" id="restartButton">
+              Сыграть ещё раз
+            </button>
+          </div>
           <div class="board" id="board"></div>
         </section>
 
@@ -37,15 +45,6 @@
             Промокод в случае вашей победы появится здесь.
           </p>
           <div class="promo-code" id="promoCode" hidden></div>
-        </section>
-
-        <section class="panel-block panel-block--restart" id="restartBlock" hidden>
-          <p class="panel-text" id="restartMessage">
-            В этот раз победил компьютер. Попробуете ещё раз?
-          </p>
-          <button class="btn btn-primary restart-button" id="restartButton">
-            Сыграть ещё раз
-          </button>
         </section>
       <footer class="footer footer-games main-footer">
         <div class="footer-games-right">
