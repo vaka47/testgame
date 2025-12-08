@@ -14,6 +14,12 @@ const gameToggle = document.getElementById("gameToggle");
 const ruleModal = document.getElementById("ruleModal");
 const ruleModalText = document.getElementById("ruleModalText");
 const ruleModalButton = document.getElementById("ruleModalButton");
+const resultModal = document.getElementById("resultModal");
+const resultModalTitle = document.getElementById("resultModalTitle");
+const resultModalText = document.getElementById("resultModalText");
+const resultModalPromo = document.getElementById("resultModalPromo");
+const resultModalPromoCode = document.getElementById("resultModalPromoCode");
+const resultModalPlay = document.getElementById("resultModalPlay");
 
 let gameMode = "tic-tac-toe";
 let isPlayerTurn = true;
@@ -97,6 +103,45 @@ function showRuleModal(message) {
 
 function hideRuleModal() {
   ruleModal.hidden = true;
+}
+
+function isMobile() {
+  return window.matchMedia("(max-width: 800px)").matches;
+}
+
+function showResultModal(variant, promoCode) {
+  if (!isMobile()) return;
+
+  let title = "Результат игры";
+  let message = "";
+
+  if (variant === "win") {
+    title = "Победа";
+    message = "Вы победили! 🎉";
+  } else if (variant === "lose") {
+    title = "Компьютер победил";
+    message = "В этот раз победил компьютер.";
+  } else if (variant === "draw") {
+    title = "Ничья";
+    message = "Ничья. Можно попробовать ещё раз.";
+  }
+
+  resultModalTitle.textContent = title;
+  resultModalText.textContent = message;
+
+  if (promoCode) {
+    resultModalPromoCode.textContent = promoCode;
+    resultModalPromo.hidden = false;
+  } else {
+    resultModalPromo.hidden = true;
+    resultModalPromoCode.textContent = "";
+  }
+
+  resultModal.hidden = false;
+}
+
+function hideResultModal() {
+  resultModal.hidden = true;
 }
 
 // --- Общие функции интерфейса ---
@@ -183,16 +228,22 @@ async function sendTelegramEvent(type, promoCode) {
 function finishWin(statusMessage) {
   isFinished = true;
   disableBoard();
-  statusText.textContent = statusMessage || "Вы победили! 🎉";
+  const finalStatus = statusMessage || "Вы победили! 🎉";
+  statusText.textContent = finalStatus;
 
   const code = generatePromoCode();
-  promoCodeElement.textContent = code;
-  promoHint.textContent =
-    "Ваш промокод. Сообщение об этой победе отправлено в Telegram‑бот.";
-  promoCodeElement.hidden = false;
-  restartMessage.textContent = "Хотите сыграть ещё раз?";
-  restartBlock.hidden = false;
-  restartButton.textContent = "Сыграть ещё раз";
+
+  if (isMobile()) {
+    showResultModal("win", code);
+  } else {
+    promoCodeElement.textContent = code;
+    promoHint.textContent =
+      "Ваш промокод. Сообщение об этой победе отправлено в Telegram‑бот.";
+    promoCodeElement.hidden = false;
+    restartMessage.textContent = "Хотите сыграть ещё раз?";
+    restartBlock.hidden = false;
+    restartButton.textContent = "Сыграть ещё раз";
+  }
 
   sendTelegramEvent("win", code);
 }
@@ -200,11 +251,16 @@ function finishWin(statusMessage) {
 function finishLose(statusMessage) {
   isFinished = true;
   disableBoard();
-  statusText.textContent =
-    statusMessage || "В этот раз победил компьютер.";
-  restartMessage.textContent = "В этот раз победил компьютер.";
-  restartBlock.hidden = false;
-  restartButton.textContent = "Сыграть ещё раз";
+  const finalStatus = statusMessage || "В этот раз победил компьютер.";
+  statusText.textContent = finalStatus;
+
+  if (isMobile()) {
+    showResultModal("lose");
+  } else {
+    restartMessage.textContent = finalStatus;
+    restartBlock.hidden = false;
+    restartButton.textContent = "Сыграть ещё раз";
+  }
 
   sendTelegramEvent("lose");
 }
@@ -212,10 +268,16 @@ function finishLose(statusMessage) {
 function finishDraw() {
   isFinished = true;
   disableBoard();
-  statusText.textContent = "Ничья. Можно попробовать ещё раз.";
-  restartMessage.textContent = "Ничья. Попробуем ещё раз?";
-  restartBlock.hidden = false;
-  restartButton.textContent = "Сыграть ещё раз";
+  const finalStatus = "Ничья. Можно попробовать ещё раз.";
+  statusText.textContent = finalStatus;
+
+  if (isMobile()) {
+    showResultModal("draw");
+  } else {
+    restartMessage.textContent = "Ничья. Попробуем ещё раз?";
+    restartBlock.hidden = false;
+    restartButton.textContent = "Сыграть ещё раз";
+  }
 }
 
 // --- Крестики-нолики ---
@@ -1141,6 +1203,8 @@ function resetBoard() {
     initCheckersState();
     renderCheckersBoard();
   }
+
+  hideResultModal();
 }
 
 function handleGameToggleClick(event) {
@@ -1167,6 +1231,15 @@ ruleModalButton.addEventListener("click", hideRuleModal);
 ruleModal.addEventListener("click", (event) => {
   if (event.target === ruleModal) {
     hideRuleModal();
+  }
+});
+resultModalPlay.addEventListener("click", () => {
+  hideResultModal();
+  resetBoard();
+});
+resultModal.addEventListener("click", (event) => {
+  if (event.target === resultModal) {
+    hideResultModal();
   }
 });
 

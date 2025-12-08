@@ -47,10 +47,10 @@
             Сыграть ещё раз
           </button>
         </section>
-        <footer class="footer footer-games main-footer">
-          <div class="footer-games-right">
-            <span class="footer-label">Игра:</span>
-            <div class="game-toggle" id="gameToggle">
+      <footer class="footer footer-games main-footer">
+        <div class="footer-games-right">
+          <span class="footer-label">Игра:</span>
+          <div class="game-toggle" id="gameToggle">
               <button
                 class="game-toggle__btn game-toggle__btn--active"
                 data-game="tic-tac-toe"
@@ -75,6 +75,22 @@
           </p>
           <button class="btn btn-primary modal__button" id="ruleModalButton">
             Понятно
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="resultModal" hidden>
+        <div class="modal">
+          <h3 class="modal__title" id="resultModalTitle">Результат игры</h3>
+          <p class="modal__text" id="resultModalText">
+            Вы победили!
+          </p>
+          <div class="modal__promo" id="resultModalPromo" hidden>
+            <span class="modal__promo-label">Ваш промокод:</span>
+            <span class="modal__promo-code" id="resultModalPromoCode"></span>
+          </div>
+          <button class="btn btn-primary modal__button" id="resultModalPlay">
+            Сыграть ещё раз
           </button>
         </div>
       </div>

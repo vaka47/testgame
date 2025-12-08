@@ -166,7 +166,7 @@ body {
   padding: 18px;
   border-radius: 28px;
   border: 1px solid rgba(226, 214, 234, 0.9);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 22px 38px rgba(117, 90, 140, 0.28);
 }
 
 .cell {
@@ -463,9 +463,37 @@ body {
   justify-content: center;
 }
 
+.modal__title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.modal__promo {
+  margin: 4px 0 12px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(249, 216, 227, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__promo-label {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.modal__promo-code {
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent-strong);
+}
+
 @media (max-width: 800px) {
   .app {
-    padding: 20px 18px 18px;
+    padding: 16px 18px 18px;
   }
 
   .main {
@@ -493,7 +521,7 @@ body {
 
 @media (max-width: 480px) {
   body {
-    padding: 12px;
+    padding: 6px 12px 12px;
   }
 
   .app {
