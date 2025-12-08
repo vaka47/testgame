@@ -201,9 +201,8 @@ function finishLose(statusMessage) {
   isFinished = true;
   disableBoard();
   statusText.textContent =
-    statusMessage || "В этот раз победил компьютер. Попробуете ещё раз?";
-  restartMessage.textContent =
-    "В этот раз победил компьютер. Попробуете ещё раз?";
+    statusMessage || "В этот раз победил компьютер.";
+  restartMessage.textContent = "В этот раз победил компьютер.";
   restartBlock.hidden = false;
   restartButton.textContent = "Сыграть ещё раз";
 

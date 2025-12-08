@@ -473,9 +473,9 @@ body {
     grid-template-areas:
       "status"
       "board"
+      "footer"
       "promo"
-      "restart"
-      "footer";
+      "restart";
   }
 
   .board {
