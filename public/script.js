@@ -351,6 +351,14 @@ function handleBattleshipClick(index) {
   if (isHit) {
     state.cells[index] = "hit";
     state.hits += 1;
+    // если корабль компьютера пересекается с нашим — перекрашиваем клетку в цвет попадания по компьютеру
+    if (state.playerShip.includes(index)) {
+      cell.classList.remove(
+        "cell--battleship-player",
+        "cell--battleship-player-hit",
+        "cell--battleship-enemy-shot"
+      );
+    }
     cell.textContent = "";
     cell.classList.add("cell--battleship-hit");
   } else {
