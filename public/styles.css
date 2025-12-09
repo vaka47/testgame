@@ -184,6 +184,10 @@ body {
   pointer-events: none;
 }
 
+#restartMessage {
+  display: none;
+}
+
 .cell {
   width: 100%;
   height: 100%;
