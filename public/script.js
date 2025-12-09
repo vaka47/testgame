@@ -1185,7 +1185,6 @@ function resetBoard() {
     "Промокод в случае вашей победы появится здесь.";
   promoCodeElement.textContent = "";
   promoCodeElement.hidden = true;
-  restartBlock.hidden = true;
 
   applyGameConfig();
   createBoard();
