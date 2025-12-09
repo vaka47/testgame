@@ -68,6 +68,19 @@ body {
   color: var(--text-soft);
 }
 
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 32px;
+}
+
+.header-restart {
+  display: none;
+  padding-inline: 14px;
+}
+
 .main {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -525,10 +538,6 @@ body {
       "restart";
   }
 
-  .board-header {
-    display: none;
-  }
-
   .promo-block {
     display: none;
   }
@@ -543,6 +552,10 @@ body {
 
   .game-toggle {
     justify-content: space-between;
+  }
+
+  .header-restart {
+    display: none !important;
   }
 }
 

@@ -10,10 +10,19 @@
     <div class="app">
       <header class="header">
         <h1 class="title" id="pageTitle">Крестики‑нолики</h1>
-        <p class="subtitle" id="pageSubtitle">
-          Небольшая игра‑пауза: победите компьютер и получите промокод на
-          скидку.
-        </p>
+        <div class="header-row">
+          <p class="subtitle" id="pageSubtitle">
+            Небольшая игра‑пауза: победите компьютер и получите промокод на
+            скидку.
+          </p>
+          <button
+            class="btn btn-primary header-restart"
+            id="restartButton"
+            type="button"
+          >
+            Сыграть ещё раз
+          </button>
+        </div>
       </header>
 
       <main class="main">
@@ -28,14 +37,6 @@
         </section>
 
         <section class="board-wrapper">
-          <div class="board-header board-header--hidden" id="restartBlock">
-            <p class="panel-text" id="restartMessage">
-              В этот раз победил компьютер.
-            </p>
-            <button class="btn btn-primary restart-button" id="restartButton">
-              Сыграть ещё раз
-            </button>
-          </div>
           <div class="board" id="board"></div>
         </section>
 

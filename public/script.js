@@ -3,9 +3,7 @@ const statusText = document.getElementById("statusText");
 const promoBlock = document.getElementById("promoBlock");
 const promoCodeElement = document.getElementById("promoCode");
 const promoHint = document.getElementById("promoHint");
-const restartBlock = document.getElementById("restartBlock");
 const restartButton = document.getElementById("restartButton");
-const restartMessage = document.getElementById("restartMessage");
 const pageTitle = document.getElementById("pageTitle");
 const pageSubtitle = document.getElementById("pageSubtitle");
 const modeTitle = document.getElementById("modeTitle");
@@ -240,7 +238,7 @@ function finishWin(statusMessage) {
     promoHint.textContent = "";
     promoHint.hidden = true;
     promoCodeElement.hidden = false;
-    restartBlock.classList.remove("board-header--hidden");
+    restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
   }
 
@@ -256,7 +254,7 @@ function finishLose(statusMessage) {
   if (isMobile()) {
     showResultModal("lose");
   } else {
-    restartBlock.classList.remove("board-header--hidden");
+    restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
   }
 
@@ -272,7 +270,7 @@ function finishDraw() {
   if (isMobile()) {
     showResultModal("draw");
   } else {
-    restartBlock.classList.remove("board-header--hidden");
+    restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
   }
 }
@@ -1185,7 +1183,7 @@ function resetBoard() {
     "Промокод в случае вашей победы появится здесь.";
   promoCodeElement.textContent = "";
   promoCodeElement.hidden = true;
-  restartBlock.hidden = true;
+  restartButton.style.display = "none";
 
   applyGameConfig();
   createBoard();
@@ -1202,7 +1200,6 @@ function resetBoard() {
   }
 
   hideResultModal();
-  restartBlock.classList.add("board-header--hidden");
 }
 
 function handleGameToggleClick(event) {
