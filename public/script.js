@@ -107,6 +107,18 @@ function isMobile() {
   return window.matchMedia("(max-width: 800px)").matches;
 }
 
+function setPromoHintDefaultDesktop() {
+  if (isMobile()) return;
+  promoHint.textContent = "Промокод в случае вашей победы появится здесь.";
+  promoHint.hidden = false;
+}
+
+function setPromoHintCheerDesktop() {
+  if (isMobile()) return;
+  promoHint.textContent = "Болею за вас. 🙂";
+  promoHint.hidden = false;
+}
+
 function showResultModal(variant, promoCode) {
   if (!isMobile()) return;
 
@@ -235,8 +247,7 @@ function finishWin(statusMessage) {
     showResultModal("win", code);
   } else {
     promoCodeElement.textContent = code;
-    promoHint.textContent = "";
-    promoHint.hidden = true;
+    setPromoHintDefaultDesktop();
     promoCodeElement.hidden = false;
     restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
@@ -254,6 +265,7 @@ function finishLose(statusMessage) {
   if (isMobile()) {
     showResultModal("lose");
   } else {
+    setPromoHintDefaultDesktop();
     restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
   }
@@ -270,6 +282,7 @@ function finishDraw() {
   if (isMobile()) {
     showResultModal("draw");
   } else {
+    setPromoHintDefaultDesktop();
     restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
   }
@@ -280,6 +293,7 @@ function finishDraw() {
 function handleTicTacToeClick(index) {
   if (!isPlayerTurn || tttBoard[index]) return;
 
+  setPromoHintCheerDesktop();
   makeTttMove(index, "X");
   isPlayerTurn = false;
 
@@ -512,6 +526,7 @@ function handleBattleshipPlacementClick(index) {
   showRuleModal(
     "Корабль отмечен. Теперь стреляйте по полю, чтобы найти корабль компьютера."
   );
+  setPromoHintCheerDesktop();
 }
 
 // --- Шашки ---
@@ -560,6 +575,7 @@ function handleCheckersClick(index) {
       showRuleModal("Нужно продолжить взятия этой шашкой.");
       return;
     }
+    setPromoHintCheerDesktop();
     state.selectedIndex = index;
     highlightSelected(index);
     return;
@@ -1179,8 +1195,7 @@ function resetBoard() {
   isPlayerTurn = true;
   isFinished = false;
   statusText.textContent = "Ваш ход";
-  promoHint.textContent =
-    "Промокод в случае вашей победы появится здесь.";
+  setPromoHintDefaultDesktop();
   promoCodeElement.textContent = "";
   promoCodeElement.hidden = true;
   restartButton.style.display = "none";
