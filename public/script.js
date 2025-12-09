@@ -247,7 +247,10 @@ function finishWin(statusMessage) {
     showResultModal("win", code);
   } else {
     promoCodeElement.textContent = code;
-    setPromoHintDefaultDesktop();
+    // После победы на десктопе показываем только заголовок и код,
+    // без дополнительного текста под ним.
+    promoHint.textContent = "";
+    promoHint.hidden = true;
     promoCodeElement.hidden = false;
     restartButton.style.display = "inline-flex";
     restartButton.textContent = "Сыграть ещё раз";
