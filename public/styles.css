@@ -79,6 +79,7 @@ body {
 .header-restart {
   display: none;
   padding-inline: 14px;
+  margin-right: 60px;
 }
 
 .main {
